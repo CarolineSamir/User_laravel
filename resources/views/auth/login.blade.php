@@ -24,16 +24,34 @@
 
 </head>
 
-<body>
-<!-- Image and text -->
-<nav class="navbar navbar-light" style="background-color: #64158f69">
-    <a class="navbar-brand " href="{{route('user_view')}}" style="padding: 0 20px 0 20px ">
-        <i class="fa-solid fa-house"></i>
-    </a>
-    <a  class="navbar-brand " style="padding: 0 20px 0 20px " href="{{ route('logout') }}">Log Out </a>
-</nav>
+<body class="auth-pages">
+<div class="container" style="width: 40%">
+    <form method="POST" action="{{ route('submit_login') }}">
+        @csrf
+        <div class="card">
+            <div class="card-header background_main">
+                Login
+            </div>
+            <div class="card-body ">
+                <div class="form-group m-2">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                           placeholder="Enter email"
+                           value="{{old('email')}}" name="email">
+                </div>
+                <div class="form-group m-2">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                </div>
 
-@yield('content')
+                <button type="submit" class="btn btn-primary m-2">Submit</button>
+                <a type="button" class="m-2" href="{{route('register')}}">register</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
 
 
 <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
@@ -56,5 +74,4 @@
 @endif
 
 </body>
-
 

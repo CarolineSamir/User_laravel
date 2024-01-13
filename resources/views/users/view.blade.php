@@ -26,8 +26,13 @@
                     <th>{{$user->name}}</th>
                     <th>{{$user->email}}</th>
                     <th class="actions">
-                        <a href="{{route('edit_user', $user->id)}}" style="color: green"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="{{route('delete_user', $user->id)}}" style="color: red"><i class="fa-solid fa-trash-can"></i></a>
+                        <form method="POST" action="{{route('delete_user', $user->id)}}">
+                            <a href="{{route('edit_user', $user->id)}}" style="color: green"><i class="fa-solid fa-pen-to-square"></i></a>
+                            @csrf
+                            <button type="submit" style="color: red">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
                     </th>
                 </tr>
 

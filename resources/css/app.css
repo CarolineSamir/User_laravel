@@ -5,3 +5,18 @@
 .actions a{
     margin: 10px;
 }
+
+.actions button{
+    border: none;
+    background: none;
+}
+
+
+.auth-pages{
+    display: flex;
+    min-height: 90vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: url('../../public/images/purple_background.jpg');
+}

@@ -91,15 +91,15 @@ class UserController extends Controller
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = $request->sender_email;
+            $mail->Username   = $request->sender_email ?: auth('web')->user()->email;
             $mail->Password   = $request->password;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port       = 465;
 
             foreach ($request->emails as $email){
-                $mail->setFrom('carolinesamir98@gmail.com', 'Mailer');
+                $mail->setFrom($mail->Username, 'Mailer');
                 $mail->addAddress($email);               //Name is optional
-                $mail->addReplyTo('carolinesamir98@gmail.com', 'Information');
+                $mail->addReplyTo($mail->Username, 'Information');
             }
 
             $mail->isHTML(true);                                  //Set email format to HTML
